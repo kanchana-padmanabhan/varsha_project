@@ -4,6 +4,7 @@ Varsha CompSci Project
 
 ## Pre-requisite
 * install python (3.8 or greater)
+* pip install virtualenv
 
 ## Instructions to run App
 
