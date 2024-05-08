@@ -8,8 +8,8 @@ Varsha CompSci Project
 ## Instructions to run App
 
 ## create the enviroment 
-virtualenv venv
-source venv/bin/activate
+* virtualenv venv
+* source venv/bin/activate
 
 ## install required packages
 pip install -r requirements.txt
