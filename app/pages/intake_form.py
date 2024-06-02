@@ -3,7 +3,7 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
 
-uri = st.session_state["config"]["mongo"]["uri"]
+uri = st.secrets["mongo"]["uri"]
 client = MongoClient(uri, server_api=ServerApi('1'))
 try:
     client.admin.command('ping')

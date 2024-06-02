@@ -12,20 +12,38 @@ from yaml.loader import SafeLoader
 # hashed_passwords = Hasher(passwords_to_hash).generate()
 
 # print(hashed_passwords)
-@st.cache_data 
-def load_credentials():
-    with open('creds.yaml') as file:
-        config = yaml.load(file, Loader=SafeLoader)
-        st.session_state["config"] = config
 
-load_credentials()
+# st.write(**st.secrets["credentials"])
 
+# @st.cache_data 
+# def load_credentials():
+#     with open('creds.yaml') as file:
+#         config = yaml.load(file, Loader=SafeLoader)
+#         st.session_state["config"] = config
+
+# load_credentials()
+
+# st.write(type(st.session_state["config"]['credentials']))
+
+# authenticator = stauth.Authenticate(
+#     st.session_state["config"]['credentials'],
+#    st.session_state["config"]['cookie']['name'],
+#     st.session_state["config"]['cookie']['key'],
+#    st.session_state["config"]['cookie']['expiry_days']
+# )
+
+# cookie_name = st.secrets['cookie']['name']
+# cookie_key = st.secrets['cookie']['key']
+# exp_days =  st.secrets['cookie']['expiry_days']
+
+credentials = st.secrets['credentials'].to_dict()
 authenticator = stauth.Authenticate(
-    st.session_state["config"]['credentials'],
-   st.session_state["config"]['cookie']['name'],
-    st.session_state["config"]['cookie']['key'],
-   st.session_state["config"]['cookie']['expiry_days']
+    credentials,
+   st.secrets['cookie']['name'],
+    st.secrets['cookie']['key'],
+  st.secrets['cookie']['expiry_days']
 )
+
 
 authenticator.login()
 
